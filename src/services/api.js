@@ -60,6 +60,13 @@ export async function queryFakeList(params) {
   return request(`/api/fake_list?${stringify(params)}`);
 }
 
+export async function fakeAccountLogin(params) {
+  return request('/api/login/account', {
+    method: 'POST',
+    body: params,
+  });
+}
+
 export async function fakeRegister(params) {
   return request('/api/register', {
     method: 'POST',
@@ -69,13 +76,6 @@ export async function fakeRegister(params) {
 
 export async function queryNotices() {
   return request('/api/notices');
-}
-
-export async function fakeAccountLogin(params) {
-  return request('/api/login/account', {
-    method: 'POST',
-    body: params,
-  });
 }
 
 export async function memberAddSubmit(params) {

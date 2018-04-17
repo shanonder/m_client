@@ -14,9 +14,7 @@ export default class BasicForms extends PureComponent {
   render() {
     return (
       <PageHeaderLayout title="删除版本" content="todo">
-        <div>
-          todo
-        </div>
+        <div>todo</div>
       </PageHeaderLayout>
     );
   }

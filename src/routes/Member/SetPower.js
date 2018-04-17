@@ -1,8 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
-import {
-  Form, Input, Select, Button,
-} from 'antd';
+import { Form, Input, Select, Button } from 'antd';
 import Authorized from '../../utils/Authorized';
 import PageHeaderLayout from '../../layouts/PageHeaderLayout';
 // import styles from './style.less';
@@ -14,10 +12,9 @@ const { Secured } = Authorized;
 @connect(state => ({
   submitting: state.member.add_submitting,
 }))
-
 @Form.create()
 export default class SetPower extends PureComponent {
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
@@ -54,41 +51,25 @@ export default class SetPower extends PureComponent {
 
     return (
       <PageHeaderLayout title="" content="修改用户密码及权限">
-        <Form
-          onSubmit={this.handleSubmit}
-          hideRequiredMark
-          style={{ marginTop: 8 }}
-        >
-          <FormItem
-            {...formItemLayout}
-            label="用户名"
-          >
+        <Form onSubmit={this.handleSubmit} hideRequiredMark style={{ marginTop: 8 }}>
+          <FormItem {...formItemLayout} label="用户名">
             {getFieldDecorator('userName', {
-              rules: [{
-                required: true, message: '请输入用户名',
-              }],
-            })(
-              <Input placeholder="输入用户名" />
-            )}
+              rules: [
+                {
+                  required: true,
+                  message: '请输入用户名',
+                },
+              ],
+            })(<Input placeholder="输入用户名" />)}
           </FormItem>
-          <FormItem
-            {...formItemLayout}
-            label="重置密码"
-          >
+          <FormItem {...formItemLayout} label="重置密码">
             {getFieldDecorator('password', {
-              rules: [{
-              }],
-            })(
-              <Input placeholder="输入新密码: 留空不修改密码" />
-            )}
+              rules: [{}],
+            })(<Input placeholder="输入新密码: 留空不修改密码" />)}
           </FormItem>
-          <FormItem
-            {...formItemLayout}
-            label="用户分组"
-          >
+          <FormItem {...formItemLayout} label="用户分组">
             {getFieldDecorator('power', {
-              rules: [{
-              }],
+              rules: [{}],
             })(
               <Select>
                 <Option value="co">程序</Option>

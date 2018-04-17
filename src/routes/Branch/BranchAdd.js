@@ -1,8 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
-import {
-  Divider, Form, Input, Select, Button, Icon,
-} from 'antd';
+import { Divider, Form, Input, Select, Button, Icon } from 'antd';
 import Authorized from '../../utils/Authorized';
 import PageHeaderLayout from '../../layouts/PageHeaderLayout';
 // import styles from './style.less';
@@ -14,13 +12,11 @@ const { Secured } = Authorized;
 @connect(state => ({
   submitting: state.branch.add_submitting,
 }))
-
 @Form.create()
 export default class BranchAdd extends PureComponent {
-  onHandleFoldButton = () => {
-  };
+  onHandleFoldButton = () => {};
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
@@ -66,138 +62,101 @@ export default class BranchAdd extends PureComponent {
 
     return (
       <PageHeaderLayout title="" content="">
-        <Form
-          onSubmit={this.handleSubmit}
-          hideRequiredMark
-          style={{ marginTop: 8 }}
-        >
-          <FormItem
-            {...formItemLayout}
-            label="版本名称"
-          >
+        <Form onSubmit={this.handleSubmit} hideRequiredMark style={{ marginTop: 8 }}>
+          <FormItem {...formItemLayout} label="版本名称">
             {getFieldDecorator('name', {
-              rules: [{
-                required: true, message: '请输入版本名称',
-              }],
-            })(
-              <Input placeholder="给版本起个名字" addonAfter={selectAfter} />
-            )}
+              rules: [
+                {
+                  required: true,
+                  message: '请输入版本名称',
+                },
+              ],
+            })(<Input placeholder="给版本起个名字" addonAfter={selectAfter} />)}
           </FormItem>
-          <FormItem
-            {...formItemLayout}
-            label="目录名称"
-          >
+          <FormItem {...formItemLayout} label="目录名称">
             {getFieldDecorator('folder', {
-              rules: [{
-                required: true, message: '请输入版本目录名称',
-              }],
+              rules: [
+                {
+                  required: true,
+                  message: '请输入版本目录名称',
+                },
+              ],
             })(
-              <Input placeholder="给版本目录起个名字" addonAfter={<Icon type="setting" onClick={this.onHandleFoldButton} />} />
+              <Input
+                placeholder="给版本目录起个名字"
+                addonAfter={<Icon type="setting" onClick={this.onHandleFoldButton} />}
+              />
             )}
           </FormItem>
           <Divider>源目录</Divider>
-          <FormItem
-            {...formItemLayout}
-            label="策划SVN路径"
-          >
-            {getFieldDecorator('deSvnFrom')(
-              <Input placeholder="请输入策划SVN路径" />
-            )}
+          <FormItem {...formItemLayout} label="策划SVN路径">
+            {getFieldDecorator('deSvnFrom')(<Input placeholder="请输入策划SVN路径" />)}
           </FormItem>
-          <FormItem
-            {...formItemLayout}
-            label="美术SVN路径"
-          >
-            {getFieldDecorator('artSvnFrom')(
-              <Input placeholder="请输入美术SVN路径" />
-            )}
+          <FormItem {...formItemLayout} label="美术SVN路径">
+            {getFieldDecorator('artSvnFrom')(<Input placeholder="请输入美术SVN路径" />)}
           </FormItem>
-          <FormItem
-            {...formItemLayout}
-            label="前端SVN路径"
-          >
-            {getFieldDecorator('codeSvnFrom', {
-            })(
-              <Input placeholder="请输入程序SVN路径" />
-            )}
+          <FormItem {...formItemLayout} label="前端SVN路径">
+            {getFieldDecorator('codeSvnFrom', {})(<Input placeholder="请输入程序SVN路径" />)}
           </FormItem>
-          <FormItem
-            {...formItemLayout}
-            label="前端ReleaseSVN路径"
-          >
-            {getFieldDecorator('codeRelSvnFrom')(
-              <Input placeholder="请输入前端ReleaseSVN路径" />
-            )}
+          <FormItem {...formItemLayout} label="前端ReleaseSVN路径">
+            {getFieldDecorator('codeRelSvnFrom')(<Input placeholder="请输入前端ReleaseSVN路径" />)}
           </FormItem>
-          <FormItem
-            {...formItemLayout}
-            label="最终发布trunkSVN路径"
-          >
+          <FormItem {...formItemLayout} label="最终发布trunkSVN路径">
             {getFieldDecorator('codeRelSvnFrom')(
               <Input placeholder="请输入最终发布trunkSVN路径" />
             )}
           </FormItem>
 
           <Divider>版本目录</Divider>
-          <FormItem
-            {...formItemLayout}
-            label="策划SVN路径"
-          >
+          <FormItem {...formItemLayout} label="策划SVN路径">
             {getFieldDecorator('deSvn', {
-              rules: [{
-                required: true, message: '请输入策划SVN路径',
-              }],
-            })(
-              <Input placeholder="请输入策划SVN路径" />
-            )}
+              rules: [
+                {
+                  required: true,
+                  message: '请输入策划SVN路径',
+                },
+              ],
+            })(<Input placeholder="请输入策划SVN路径" />)}
           </FormItem>
-          <FormItem
-            {...formItemLayout}
-            label="美术SVN路径"
-          >
+          <FormItem {...formItemLayout} label="美术SVN路径">
             {getFieldDecorator('artSvn', {
-              rules: [{
-                required: true, message: '请输入美术SVN路径',
-              }],
-            })(
-              <Input placeholder="请输入美术SVN路径" />
-            )}
+              rules: [
+                {
+                  required: true,
+                  message: '请输入美术SVN路径',
+                },
+              ],
+            })(<Input placeholder="请输入美术SVN路径" />)}
           </FormItem>
-          <FormItem
-            {...formItemLayout}
-            label="前端SVN路径"
-          >
+          <FormItem {...formItemLayout} label="前端SVN路径">
             {getFieldDecorator('codeSvn', {
-              rules: [{
-                required: true, message: '请输入程序SVN路径',
-              }],
-            })(
-              <Input placeholder="请输入程序SVN路径" />
-            )}
+              rules: [
+                {
+                  required: true,
+                  message: '请输入程序SVN路径',
+                },
+              ],
+            })(<Input placeholder="请输入程序SVN路径" />)}
           </FormItem>
-          <FormItem
-            {...formItemLayout}
-            label="前端ReleaseSVN路径"
-          >
+          <FormItem {...formItemLayout} label="前端ReleaseSVN路径">
             {getFieldDecorator('codeRelSvn', {
-              rules: [{
-                required: true, message: '请输入前端ReleaseSVN路径',
-              }],
-            })(
-              <Input placeholder="请输入前端ReleaseSVN路径" />
-            )}
+              rules: [
+                {
+                  required: true,
+                  message: '请输入前端ReleaseSVN路径',
+                },
+              ],
+            })(<Input placeholder="请输入前端ReleaseSVN路径" />)}
           </FormItem>
-          <FormItem
-            {...formItemLayout}
-            label="最终发布trunkSVN路径"
-          >
+          <FormItem {...formItemLayout} label="最终发布trunkSVN路径">
             {getFieldDecorator('codeRelSvn', {
-              rules: [{
-                required: true, message: '请输入最终发布trunkSVN路径',
-              }],
-            })(
-              <Input placeholder="请输入最终发布trunkSVN路径" />
-            )}
+              rules: [
+                {
+                  required: true,
+                  message: '请输入最终发布trunkSVN路径',
+                },
+              ],
+            })(<Input placeholder="请输入最终发布trunkSVN路径" />)}
           </FormItem>
           <FormItem {...submitFormLayout} style={{ marginTop: 32 }}>
             <Button type="primary" htmlType="submit" loading={submitting}>
